@@ -3,13 +3,34 @@ import { RemoteComponent } from "../RemoteComponent";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   useLocalUrl?: boolean;
+  showDayName?: boolean;
   bgColor?: string;
   subslides?: any[];
-  isOdd?: boolean;
   logo?: string;
+  pageIntervalTime?: number;
+  showTime?: boolean;
+  showFacility?: boolean;
+  showActivity?: boolean;
+  showBookingNote?: boolean;
+  showTeam?: boolean;
+  showTeamleaders?: boolean;
+  showUserName?: boolean;
 }
 
-const BookByen: FC<Props> = ({ useLocalUrl, bgColor, isOdd, logo }) => {
+const BookByen: FC<Props> = ({
+  useLocalUrl,
+  showDayName,
+  bgColor,
+  logo,
+  pageIntervalTime,
+  showTime,
+  showFacility,
+  showActivity,
+  showBookingNote,
+  showTeam,
+  showTeamleaders,
+  showUserName,
+}) => {
   const [state, setState] = useState([]);
   // this is a boolean that chooses whether we use the local url or the one from github
   const url = useLocalUrl
@@ -26,12 +47,21 @@ const BookByen: FC<Props> = ({ useLocalUrl, bgColor, isOdd, logo }) => {
 
     fetchData().catch(console.error);
   }, []);
+
   const slideTemplate = {
     content: {
       bgColor,
       subslides: state,
-      isOdd,
+      showDayName,
       logo,
+      pageIntervalTime,
+      showTime,
+      showFacility,
+      showActivity,
+      showBookingNote,
+      showTeam,
+      showTeamleaders,
+      showUserName,
     },
   };
 
