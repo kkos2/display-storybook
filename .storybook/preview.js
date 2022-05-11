@@ -11,17 +11,10 @@ export const parameters = {
   viewport: {
     viewports: {
       horizontal: {
-        name: "9/16 (horizontal)",
+        name: "16/9",
         styles: {
           width: "1280px",
           height: "720px",
-        },
-      },
-      vertical: {
-        name: "16/9 (vertical)",
-        styles: {
-          width: "720px",
-          height: "1280px",
         },
       },
     },
