@@ -2,6 +2,7 @@ import { FC, HTMLAttributes, useEffect, useState } from "react";
 import { RemoteComponent } from "../RemoteComponent";
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
+  apiUrl?: string;
   useLocalUrl?: boolean;
   showDayName?: boolean;
   bgColor?: string;
@@ -18,6 +19,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 const BookByen: FC<Props> = ({
+  apiUrl,
   useLocalUrl,
   showDayName,
   bgColor,
@@ -38,15 +40,14 @@ const BookByen: FC<Props> = ({
     : "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/book-byen.js";
 
   useEffect(() => {
+    if (!apiUrl) return;
     const fetchData = async () => {
-      const data = await fetch(
-        "https://api.bookbyen.dk/api/Bookings/Infoscreen?locationId=71"
-      ).then((response) => response.json());
+      const data = await fetch(apiUrl).then((response) => response.json());
       setState(data);
     };
 
     fetchData().catch(console.error);
-  }, []);
+  }, [apiUrl]);
 
   const slideTemplate = {
     content: {

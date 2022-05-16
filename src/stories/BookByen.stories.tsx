@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof BookByen> = (args) => (
 
 export const example1 = Template.bind({});
 example1.args = {
+  apiUrl: "https://api.bookbyen.dk/api/Bookings/Infoscreen?locationId=71",
   useLocalUrl: true,
   showDayName: false,
   logo: "https://admin.kkos2display.dk/bundles/kkos2displayintegration/assets/img/kbh-logo.png",
